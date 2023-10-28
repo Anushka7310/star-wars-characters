@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, Button, Center, Text, Icon, Image } from "@chakra-ui/react";
+import { Box, Grid, Button, Center, Icon, Image } from "@chakra-ui/react";
 import CharacterCard from "../CharacterCard";
 import { FiChevronDown } from "react-icons/fi";
 
