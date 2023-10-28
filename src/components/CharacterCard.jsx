@@ -1,53 +1,50 @@
 import React from "react";
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
-import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import {
+  Box,
+  Flex,
+  Text,
+  Button,
+  Center,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { HiStar as StarIcon } from "react-icons/hi";
 
-function CharacterCard({
-  character,
-  isFavorite,
-  onAddToFavorites,
-  onRemoveFromFavorites,
-}) {
+function CharacterCard({ character, isFavorite, toggleFavorite }) {
+  // Extract the character ID from the character's URL
+  const characterId = character.url.split("/").slice(-2, -1);
+  // Construct the image URL for the character
+  const imageUrl = `https://starwars-visualguide.com/assets/img/characters/${characterId}.jpg`;
+
+  const hoverBgColor = useColorModeValue("gray.100", "gray.700");
+
   return (
     <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      p={4}
-      m={2}
-      width={["90%", "45%", "30%"]}
+      borderRadius="md"
+      overflow="hidden"
+      position="relative"
+      transition="background 0.3s"
+      _hover={{ backgroundColor: hoverBgColor }}
+      maxW="sm"
+      margin="auto"
     >
-      <Text fontSize="lg" fontWeight="bold">
-        {character.name}
-      </Text>
-      <Flex justifyContent="space-between">
-        <Text>Height: {character.height}</Text>
-        <Text>Mass: {character.mass}</Text>
-      </Flex>
-      <Text>Hair Color: {character.hair_color}</Text>
-      <Text>Eye Color: {character.eye_color}</Text>
-      <Text>Birth Year: {character.birth_year}</Text>
-      <Text>Gender: {character.gender}</Text>
-      {isFavorite ? (
-        <Button
-          leftIcon={<FaStar />}
-          colorScheme="yellow"
-          variant="outline"
-          onClick={() => onRemoveFromFavorites(character)}
-          mt={2}
-        >
-          Remove from Favorites
-        </Button>
-      ) : (
-        <Button
-          leftIcon={<FaStar />}
-          colorScheme="blue"
-          variant="outline"
-          onClick={() => onAddToFavorites(character)}
-          mt={2}
-        >
-          Add to Favorites
-        </Button>
-      )}
+      <Link to={`/character/${characterId}`}>
+        <img src={imageUrl} alt={character.name} width="100%" height="auto" />
+        <Center p={2} bg="white">
+          <Text fontSize="md" fontWeight="bold" color={"black"}>
+            {character.name}
+          </Text>
+        </Center>
+      </Link>
+      <Button
+        onClick={() => toggleFavorite(character)}
+        position="absolute"
+        top="0"
+        right="0"
+        bgColor={isFavorite ? "yellow.400" : "gray.300"}
+      >
+        <StarIcon color="white" />
+      </Button>
     </Box>
   );
 }
