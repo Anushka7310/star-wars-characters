@@ -87,7 +87,6 @@ function CharacterList() {
           }}
         >
           <Image src="/icon.png" alt="Star Wars Logo" mb={4} />{" "}
-          {/* Add Star Wars logo */}
           <Button
             onClick={scrollToCharacters}
             leftIcon={<Icon as={FiChevronDown} />}

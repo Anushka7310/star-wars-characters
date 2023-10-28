@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CharacterList from "./components/pages/CharacterList";
 import CharacterDetails from "./components/pages/CharacterDetails";
 import Favourites from "./components/pages/Favourites";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar.jsx";
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
