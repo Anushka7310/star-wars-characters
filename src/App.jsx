@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider, CSSReset, Box, position } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset, Box } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CharacterList from "./components/pages/CharacterList";
 import CharacterDetails from "./components/pages/CharacterDetails";
