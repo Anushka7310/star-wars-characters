@@ -10,6 +10,7 @@ import {
   Center,
   Image,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function Favourites() {
   const [favoriteCharacters, setFavoriteCharacters] = useState([]);
@@ -63,8 +64,9 @@ function CharacterCard({ characterName, onRemove }) {
         );
         const data = await response.json();
         if (data.results.length > 0) {
-          setCharacter(data.results[0]);
           const characterId = data.results[0]?.url.split("/").slice(-2, -1);
+          let characterDetail = { ...data.results[0], characterId };
+          setCharacter(characterDetail);
           const characterImageResponse = await fetch(
             `https://starwars-visualguide.com/assets/img/characters/${characterId}.jpg`
           );
@@ -84,23 +86,25 @@ function CharacterCard({ characterName, onRemove }) {
     <Box borderWidth="1px" borderRadius="md" p={4}>
       {character ? (
         <VStack spacing={3} align="start">
-          <Image
-            src={characterImage}
-            alt={character.name}
-            boxSize="300px"
-            objectFit="cover"
-          />{" "}
-          {/* Increased image size */}
-          <Text fontWeight="bold" fontSize="lg">
-            {character.name}
-          </Text>
-          <Text>Height: {character.height} cm</Text>
-          <Text>Gender: {character.gender}</Text>
-          <Text>Hair Color: {character.hair_color}</Text>
-          <Text>Skin Color: {character.skin_color}</Text>
-          <Text>Eye Color: {character.eye_color}</Text>
-          <Text>Birth Year: {character.birth_year}</Text>
-          <Badge colorScheme="teal">Gender: {character.gender}</Badge>
+          <Link to={`/character/${character.characterId}`}>
+            <Image
+              src={characterImage}
+              alt={character.name}
+              boxSize="300px"
+              objectFit="cover"
+            />{" "}
+            {/* Increased image size */}
+            <Text fontWeight="bold" fontSize="lg">
+              {character.name}
+            </Text>
+            <Text>Height: {character.height} cm</Text>
+            <Text>Gender: {character.gender}</Text>
+            <Text>Hair Color: {character.hair_color}</Text>
+            <Text>Skin Color: {character.skin_color}</Text>
+            <Text>Eye Color: {character.eye_color}</Text>
+            <Text>Birth Year: {character.birth_year}</Text>
+            <Badge colorScheme="teal">Gender: {character.gender}</Badge>
+          </Link>
           <Stack
             direction="row"
             justify="space-between"
