@@ -6,7 +6,7 @@ This is a ReactJS application built with Chakra UI that allows you to browse and
 
 Check out a video demonstration:
 
-[![Watch the video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[Watch the video](https://www.loom.com/share/a36a3e33a61d4df1845e37a4e4369b99)
 
 ## Demo
 
