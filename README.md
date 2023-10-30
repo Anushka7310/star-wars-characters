@@ -39,3 +39,8 @@ To run this project locally:
 
     ```bash
    npm run start
+
+
+![star-wars-character](https://github.com/Anushka7310/star-wars-characters/assets/61081130/73348080-1d64-49e0-9b76-a7f8859f59c0)
+
+    
